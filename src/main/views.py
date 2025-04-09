@@ -20,3 +20,15 @@ def index(request):
         "products": products
     }
     return render(request, 'index.html', ctx)
+
+
+def add_products (request):
+    pass 
+
+
+    ctx = {
+
+    }
+
+    return render(request, 'products_add',)
+
