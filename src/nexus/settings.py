@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'catigory',
     'product',
     'user',
+    'blog',
+    'contact'
 ]
 
 MIDDLEWARE = [
