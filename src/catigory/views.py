@@ -6,6 +6,7 @@ from .models import Region
 def region(request):
     if request.method == 'POST':
         form = RegionForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             return redirect('region')
