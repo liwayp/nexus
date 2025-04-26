@@ -41,3 +41,5 @@ def get_product(request, pk):
     elif request.method == 'DELETE':
         product.delete()
         return Response({'status': 'Deleted'},  status=status.HTTP_200_OK)
+    
+

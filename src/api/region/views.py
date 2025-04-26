@@ -1,5 +1,7 @@
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from catigory.models import Region
 from .serializers import RegionSerializer
@@ -41,3 +43,24 @@ def detail_region(request, pk):
     elif request.method == 'DELETE':
         region.delete()
         return Response({'status': 'Deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+    
+
+
+class GetRegion(APIView):
+    def get(self, request):
+        region = Region.objects.all()
+        result = RegionSerializer(region, many=True)
+        return Response({"data": result.data})
+    
+
+
+class DetailRegion(APIView):
+    def get_object(self,pk):
+        region = get_object_or_404(Region, pk=pk)
+        return region
+
+
+    def get (self, request, pk):
+        region = self.get_object(pk)
+        serializer = RegionSerializer(region)
+        return Response(serializer.data)
